@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prem Gore Portfolio</title>
+  <meta name="description" content="Portfolio website for Prem Gore, a web developer focused on React, Next.js, and MERN stack applications." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem; --space-24: 6rem;
+      --color-bg: #f7f6f2; --color-surface: #f9f8f5; --color-surface-2: #fbfbf9; --color-surface-offset: #edeae5;
+      --color-border: #d4d1ca; --color-text: #28251d; --color-text-muted: #6f6d67; --color-text-faint: #9d9a93;
+      --color-text-inverse: #f9f8f4; --color-primary: #01696f; --color-primary-hover: #0c4e54; --color-primary-highlight: #dbe8e7;
+      --radius-md: 0.5rem; --radius-lg: 0.875rem; --radius-xl: 1.25rem; --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(30,24,16,.06); --shadow-md: 0 8px 24px rgba(30,24,16,.08); --shadow-lg: 0 18px 50px rgba(30,24,16,.12);
+      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --font-body: 'Inter', system-ui, sans-serif; --font-display: 'Instrument Serif', Georgia, serif;
+      --content: min(1120px, calc(100vw - 2rem));
+    }
+    [data-theme="dark"] {
+      --color-bg: #171614; --color-surface: #1c1b19; --color-surface-2: #201f1d; --color-surface-offset: #2a2825;
+      --color-border: #393836; --color-text: #e3e1dc; --color-text-muted: #b3afa8; --color-text-faint: #817d77;
+      --color-text-inverse: #1b1916; --color-primary: #61a7b1; --color-primary-hover: #8ec6ce; --color-primary-highlight: #243537;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.18); --shadow-md: 0 8px 24px rgba(0,0,0,.24); --shadow-lg: 0 18px 50px rgba(0,0,0,.34);
+    }
+    *,*::before,*::after{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;min-height:100vh;font-family:var(--font-body);font-size:var(--text-base);line-height:1.6;color:var(--color-text);background:radial-gradient(circle at top right, rgba(1,105,111,.08), transparent 22%),radial-gradient(circle at left 20%, rgba(1,105,111,.05), transparent 20%),var(--color-bg)}
+    img,svg{display:block;max-width:100%} a{color:inherit;text-decoration:none} button{font:inherit}
+    .skip-link{position:absolute;left:1rem;top:-3rem;background:var(--color-text);color:var(--color-text-inverse);padding:.75rem 1rem;border-radius:var(--radius-md);z-index:100}.skip-link:focus{top:1rem}
+    .container{width:var(--content);margin:0 auto}.section{padding:clamp(var(--space-12),7vw,var(--space-24)) 0}
+    .eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .8rem;border:1px solid rgba(40,37,29,.1);border-radius:var(--radius-full);background:var(--color-surface-2);color:var(--color-text-muted);font-size:var(--text-xs);letter-spacing:.08em;text-transform:uppercase}
+    .site-header{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:color-mix(in srgb, var(--color-bg) 80%, transparent);border-bottom:1px solid rgba(40,37,29,.08)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:76px}.brand{display:inline-flex;align-items:center;gap:.85rem;font-weight:700}.brand-mark{width:42px;height:42px;padding:8px;border-radius:12px;background:var(--color-surface);border:1px solid rgba(40,37,29,.08);box-shadow:var(--shadow-sm);color:var(--color-primary)}
+    .nav-links{display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap}.nav-links a{color:var(--color-text-muted);font-size:var(--text-sm)}.nav-links a:hover,.nav-links a:focus-visible{color:var(--color-text)}
+    .theme-toggle{width:44px;height:44px;border:1px solid rgba(40,37,29,.1);border-radius:50%;display:grid;place-items:center;background:var(--color-surface);color:var(--color-text);cursor:pointer}
+    .hero{padding:clamp(var(--space-12),9vw,8rem) 0 var(--space-16)} .hero-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:clamp(var(--space-8),4vw,var(--space-16));align-items:center}
+    h1,h2,h3{margin:0;line-height:1.08} h1{font-family:var(--font-display);font-size:clamp(3rem,6vw,6.5rem);font-weight:400;letter-spacing:-.03em;max-width:10ch} h2{font-size:var(--text-xl);margin-bottom:var(--space-4)} h3{font-size:var(--text-lg);margin-bottom:.45rem}
+    .hero p,.lead,.muted{color:var(--color-text-muted)} .lead{max-width:62ch}.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:var(--space-6)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-width:160px;min-height:48px;padding:.9rem 1.2rem;border-radius:var(--radius-full);border:1px solid transparent;font-weight:600;transition:transform var(--transition),background var(--transition),border-color var(--transition),color var(--transition)}
+    .btn:hover{transform:translateY(-1px)} .btn-primary{background:var(--color-primary);color:var(--color-text-inverse)} .btn-primary:hover{background:var(--color-primary-hover)} .btn-secondary{background:var(--color-surface);border-color:rgba(40,37,29,.1)}
+    .hero-card{background:linear-gradient(180deg, var(--color-surface-2), var(--color-surface));border:1px solid rgba(40,37,29,.08);border-radius:28px;padding:var(--space-8);box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+    .hero-card::after{content:"";position:absolute;inset:auto -10% -30% auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle, rgba(1,105,111,.16), transparent 65%)}
+    .code-block{background:#121212;color:#f1f5f9;border-radius:20px;padding:1rem;font-size:.95rem;overflow:auto;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)} .code-line{display:block;white-space:pre}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-top:var(--space-6)} .stat{padding:1rem;background:var(--color-bg);border-radius:var(--radius-lg);border:1px solid rgba(40,37,29,.08)} .stat strong{display:block;font-size:1.45rem;margin-bottom:.2rem}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:var(--space-8)} .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)}
+    .card{background:var(--color-surface);border:1px solid rgba(40,37,29,.08);border-radius:24px;padding:var(--space-6);box-shadow:var(--shadow-sm)} .chips{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:var(--space-4)}
+    .chip{padding:.55rem .9rem;border-radius:var(--radius-full);background:var(--color-primary-highlight);color:var(--color-primary);font-size:var(--text-sm);font-weight:600}
+    .timeline{display:grid;gap:var(--space-4)} .timeline-item{display:grid;grid-template-columns:140px 1fr;gap:var(--space-5);padding:var(--space-5) 0;border-top:1px solid rgba(40,37,29,.08)} .timeline-item:first-child{border-top:0;padding-top:0}
+    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-5)} .project-card{display:flex;flex-direction:column;gap:var(--space-5);min-height:100%;background:var(--color-surface);border:1px solid rgba(40,37,29,.08);border-radius:26px;padding:var(--space-6);box-shadow:var(--shadow-md)}
+    .project-top{display:flex;justify-content:space-between;gap:1rem;align-items:start}.tag-row{display:flex;flex-wrap:wrap;gap:.6rem}.tag{padding:.35rem .7rem;border-radius:var(--radius-full);border:1px solid rgba(40,37,29,.1);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-muted)} .project-links{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:auto} .project-links a{font-size:var(--text-sm);font-weight:600;color:var(--color-primary)}
+    .contact-box{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--space-6);padding:clamp(var(--space-6),5vw,var(--space-10));border-radius:32px;background:linear-gradient(180deg, var(--color-surface), var(--color-surface-2));border:1px solid rgba(40,37,29,.08);box-shadow:var(--shadow-lg)}
+    .contact-list{display:grid;gap:1rem}.contact-item{padding:1rem 1.1rem;border-radius:18px;background:var(--color-bg);border:1px solid rgba(40,37,29,.08)} .footer{padding:var(--space-8) 0 var(--space-10);color:var(--color-text-muted);font-size:var(--text-sm)} .small{font-size:var(--text-sm)}
+    .availability{display:inline-flex;align-items:center;gap:.55rem;color:var(--color-text-muted);font-size:var(--text-sm);margin-top:var(--space-4)} .availability::before{content:"";width:10px;height:10px;border-radius:50%;background:#4caf50;box-shadow:0 0 0 6px rgba(76,175,80,.12)} :focus-visible{outline:2px solid var(--color-primary);outline-offset:3px}
+    @media (max-width:960px){.hero-grid,.contact-box,.grid-3,.project-grid{grid-template-columns:1fr}.timeline-item{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}} @media (max-width:720px){.nav{align-items:start;padding:.9rem 0;flex-direction:column}.nav-links{gap:.75rem}h1{max-width:100%}.stats{grid-template-columns:1fr}.hero-card{padding:var(--space-6)}} @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Prem Gore home">
+        <svg class="brand-mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M14 47V17H33.5C41.5 17 47 21.8 47 29C47 36.2 41.5 41 33.5 41H22" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 31H41" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M22 47L34.5 34.5" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
+        </svg>
+        <span>Prem Gore</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero container" id="top">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Web Developer · React · Next.js · MERN</span>
+          <h1>Building clean, reliable web experiences for modern teams.</h1>
+          <p class="lead">I am Prem Gore, a web developer focused on React, Next.js, Node.js, and full-stack applications. I enjoy turning product ideas into responsive, user-friendly interfaces with practical backend systems and maintainable code.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View projects</a>
+            <a class="btn btn-secondary" href="#contact">Contact me</a>
+          </div>
+          <div class="availability">Open to remote internships, frontend roles, and full-stack opportunities.</div>
+        </div>
+        <aside class="hero-card" aria-label="Developer snapshot">
+          <div class="code-block" aria-hidden="true">
+            <span class="code-line">const developer = {</span>
+            <span class="code-line">  name: "Prem Gore",</span>
+            <span class="code-line">  stack: ["React", "Next.js", "Node.js", "MongoDB"],</span>
+            <span class="code-line">  strengths: ["Responsive UI", "API Integration", "Clean Code"],</span>
+            <span class="code-line">  lookingFor: "Remote web developer roles"</span>
+            <span class="code-line">};</span>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>Frontend</strong><span class="small">React, Next.js, responsive UI</span></div>
+            <div class="stat"><strong>Backend</strong><span class="small">Node.js, Express, REST APIs</span></div>
+            <div class="stat"><strong>Focus</strong><span class="small">Projects that solve real user problems</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <section class="section container" id="about">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">About</span>
+          <h2>A portfolio designed for recruiters and hiring teams.</h2>
+        </div>
+        <p class="muted">This site keeps the focus on practical skills, project outcomes, and the technologies I use most in frontend and full-stack development.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card"><h3>What I build</h3><p class="muted">Web applications with responsive interfaces, reusable components, API integrations, and backend functionality that supports real product needs.</p></article>
+        <article class="card"><h3>How I work</h3><p class="muted">I prefer clear requirements, consistent communication, and clean implementation. I break work into smaller tasks, test carefully, and improve details that affect user experience.</p></article>
+        <article class="card"><h3>What I want next</h3><p class="muted">A remote internship or junior developer role where I can contribute quickly, learn from experienced teammates, and keep improving my frontend and full-stack development skills.</p></article>
+      </div>
+    </section>
+    <section class="section container" id="skills">
+      <div class="section-head">
+        <div><span class="eyebrow">Skills</span><h2>Technologies I use to build and ship.</h2></div>
+        <p class="muted">This section is easy to customize later with your exact tools, certifications, or stronger areas.</p>
+      </div>
+      <div class="card"><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">MongoDB</span><span class="chip">SQL</span><span class="chip">REST APIs</span><span class="chip">Git & GitHub</span><span class="chip">Responsive Design</span></div></div>
+    </section>
+    <section class="section container" id="projects">
+      <div class="section-head">
+        <div><span class="eyebrow">Projects</span><h2>Selected work aligned with web developer roles.</h2></div>
+        <p class="muted">Replace demo links with your exact GitHub repositories and live project URLs when ready.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card"><div class="project-top"><div><h3>Real Estate MERN App</h3><p class="muted">A property platform with listing flows, search filters, and full-stack CRUD functionality for managing real estate data.</p></div></div><div class="tag-row"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Express</span></div><div class="project-links"><a href="https://github.com/codeprem10" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://real-estate-full-stack-client.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo ↗</a></div></article>
+        <article class="project-card"><div class="project-top"><div><h3>SensAI Career Coach</h3><p class="muted">An AI-assisted application that helps users with career support workflows, combining user interaction, APIs, and a structured frontend experience.</p></div></div><div class="tag-row"><span class="tag">Next.js</span><span class="tag">API Integration</span><span class="tag">UI Design</span></div><div class="project-links"><a href="https://github.com/codeprem10" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://path360.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo ↗</a></div></article>
+        <article class="project-card"><div class="project-top"><div><h3>FinEd Loan Platform</h3><p class="muted">A finance-focused web platform built to simplify loan-related workflows with clear interfaces, form handling, and practical frontend logic.</p></div></div><div class="tag-row"><span class="tag">Frontend</span><span class="tag">Forms</span><span class="tag">UX</span></div><div class="project-links"><a href="https://github.com/codeprem10" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://fined-one.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo ↗</a></div></article>
+        <article class="project-card"><div class="project-top"><div><h3>Portfolio Website</h3><p class="muted">A personal portfolio focused on readable layout, strong project presentation, and recruiter-friendly content for remote job applications.</p></div></div><div class="tag-row"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><div class="project-links"><a href="https://github.com/codeprem10" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://prem-portfolio-phi.vercel.app/#top" target="_blank" rel="noopener noreferrer">Live demo ↗</a></div></article>
+      </div>
+    </section>
+    <section class="section container" id="experience">
+      <div class="section-head">
+        <div><span class="eyebrow">Experience</span><h2>Education, achievements, and readiness.</h2></div>
+        <p class="muted">This layout can also be reused for internships, certifications, freelance work, or hackathon highlights.</p>
+      </div>
+      <div class="card timeline">
+        <article class="timeline-item"><div class="small muted">Featured achievement</div><div><h3>PICT Hackathon Team Lead</h3><p class="muted">Led a team in a competitive hackathon and achieved 4th rank among 150 teams, demonstrating collaboration, ownership, and solution-building under time constraints.</p></div></article>
+        <article class="timeline-item"><div class="small muted">Development focus</div><div><h3>Frontend and full-stack projects</h3><p class="muted">Built projects using the MERN stack and Next.js, with emphasis on practical interfaces, user-centric design, and deployable web application workflows.</p></div></article>
+        <article class="timeline-item"><div class="small muted">Current goal</div><div><h3>Remote internship or junior web developer role</h3><p class="muted">Actively targeting opportunities where strong fundamentals, project quality, and the ability to contribute across frontend and backend tasks are valued.</p></div></article>
+      </div>
+    </section>
+    <section class="section container" id="contact">
+      <div class="contact-box">
+        <div>
+          <span class="eyebrow">Contact</span>
+          <h2>Let’s build something useful.</h2>
+          <p class="lead">This version already includes your GitHub and LinkedIn profile links. You can next add your email and resume link before deployment.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/prem-gore-664318346/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
+            <a class="btn btn-secondary" href="https://github.com/codeprem10" target="_blank" rel="noopener noreferrer">GitHub profile</a>
+          </div>
+        </div>
+        <div class="contact-list">
+          <div class="contact-item"><strong>Email</strong><div class="muted">Add your professional email here</div></div>
+          <div class="contact-item"><strong>Location</strong><div class="muted">Pimpri-Chinchwad, Maharashtra, India</div></div>
+          <div class="contact-item"><strong>LinkedIn</strong><div class="muted"><a href="https://www.linkedin.com/in/prem-gore-664318346/" target="_blank" rel="noopener noreferrer">linkedin.com/in/prem-gore-664318346</a></div></div>
+          <div class="contact-item"><strong>GitHub</strong><div class="muted"><a href="https://github.com/codeprem10" target="_blank" rel="noopener noreferrer">github.com/codeprem10</a></div></div>
+          <div class="contact-item"><strong>Resume</strong><div class="muted">Add your hosted resume PDF link here after uploading it.</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer container"><p>© 2026 Prem Gore. Built for web developer applications, remote roles, and internship opportunities.</p></footer>
+  <script>
+    (function(){const root=document.documentElement;const button=document.querySelector('[data-theme-toggle]');let theme=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';root.setAttribute('data-theme',theme);const renderIcon=()=>{button.innerHTML=theme==='dark'?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>':'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>'};renderIcon();button.addEventListener('click',function(){theme=theme==='dark'?'light':'dark';root.setAttribute('data-theme',theme);renderIcon();});})();
+  </script>
+</body>
+</html>
